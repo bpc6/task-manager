@@ -3,4 +3,3 @@ target_sources(task-manager PRIVATE
         task.cpp
         task_manager.cpp
 )
-
