@@ -1,6 +1,8 @@
 #include "task-manager/task.h"
-#include "gtest/gtest.h"
+
 #include <string>
+
+#include "gtest/gtest.h"
 
 // Test the constructors
 TEST(TaskConstructorTest, ConstructorWithDescription) {
@@ -14,7 +16,7 @@ TEST(TaskConstructorTest, ConstructorWithDescription) {
 TEST(TaskConstructorTest, ConstructorWithoutDescription) {
   Task task("Task Title", "2023-10-31");
   EXPECT_EQ(task.getTitle(), "Task Title");
-  EXPECT_EQ(task.getDescription(), ""); // Expect the default description
+  EXPECT_EQ(task.getDescription(), "");  // Expect the default description
   EXPECT_EQ(task.getDue(), "2023-10-31");
   EXPECT_EQ(task.getStatus(), "Not Started");
 }
@@ -41,7 +43,7 @@ TEST(TaskAsRecordTest, AsRecord) {
             "Task Title, Task Description, 2023-10-31, Not Started,\n");
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
