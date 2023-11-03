@@ -21,6 +21,14 @@ TEST(TaskConstructorTest, ConstructorWithoutDescription) {
   EXPECT_EQ(task.getStatus(), "Not Started");
 }
 
+TEST(TaskConstructorTest, ConstructorWithStatus) {
+  Task task("Task Title", "2023-10-31", "Task Description", "In Progress");
+  EXPECT_EQ(task.getTitle(), "Task Title");
+  EXPECT_EQ(task.getDescription(), "Task Description");
+  EXPECT_EQ(task.getDue(), "2023-10-31");
+  EXPECT_EQ(task.getStatus(), "In Progress");
+}
+
 // Test the getters and setters
 TEST(TaskGetterSetterTest, SettersAndGetters) {
   Task task("Task Title", "2023-10-31");
@@ -39,8 +47,7 @@ TEST(TaskGetterSetterTest, SettersAndGetters) {
 // Test the asRecord method
 TEST(TaskAsRecordTest, AsRecord) {
   Task task("Task Title", "2023-10-31", "Task Description");
-  EXPECT_EQ(task.asRecord(),
-            "Task Title, Task Description, 2023-10-31, Not Started,\n");
+  EXPECT_EQ(task.asRecord(), "Task Title, Task Description, 2023-10-31, Not Started,\n");
 }
 
 int main(int argc, char** argv) {

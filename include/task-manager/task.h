@@ -6,13 +6,14 @@
 class Task {
  private:
   std::string title;
-  std::string description;
   std::string due;
+  std::string description;
   std::string status;
 
  public:
-  Task(std::string title, std::string dueDate);
+  Task(std::string title, std::string dueDate, std::string description, std::string status);
   Task(std::string title, std::string dueDate, std::string description);
+  Task(std::string title, std::string dueDate);
 
   // Getters
   std::string getTitle() const;
