@@ -1,5 +1,5 @@
 #include <string>
-#include "../include/task.h"
+#include "task-manager/task.h"
 #include "gtest/gtest.h"
 
 // Test the constructors
