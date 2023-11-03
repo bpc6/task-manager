@@ -27,7 +27,7 @@ class Task {
   void setDue(const std::string& newDue);
   void setStatus(const std::string& newStatus);
 
-  std::string asRecord();
+  std::string toString();
 };
 
 #endif  // TASK_MANAGER_TASK_H

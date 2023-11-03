@@ -3,6 +3,8 @@ target_include_directories(task_test PRIVATE ../include)
 target_sources(task_test PRIVATE
         task_test.cpp
         ../src/task.cpp
+        task_manager_test.cpp
+        ../src/task_manager.cpp
 )
 
 target_link_libraries(task_test gtest_main)

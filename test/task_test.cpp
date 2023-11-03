@@ -44,10 +44,10 @@ TEST(TaskGetterSetterTest, SettersAndGetters) {
   EXPECT_EQ(task.getStatus(), "In Progress");
 }
 
-// Test the asRecord method
-TEST(TaskAsRecordTest, AsRecord) {
+// Test the toString method
+TEST(TaskTOSTRINGTest, TOSTRING) {
   Task task("Task Title", "2023-10-31", "Task Description");
-  EXPECT_EQ(task.asRecord(), "Task Title, Task Description, 2023-10-31, Not Started,\n");
+  EXPECT_EQ(task.toString(), "Task Title, Task Description, 2023-10-31, Not Started,\n");
 }
 
 int main(int argc, char** argv) {

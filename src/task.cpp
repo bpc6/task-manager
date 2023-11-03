@@ -36,6 +36,6 @@ void Task::setDue(const std::string& newDue) { due = newDue; }
 
 void Task::setStatus(const std::string& newStatus) { status = newStatus; }
 
-std::string Task::asRecord() {
+std::string Task::toString() {
   return title + ", " + description + ", " + due + ", " + status + ",\n";
 }
