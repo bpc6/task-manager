@@ -27,7 +27,7 @@ class Task {
   void setDue(const std::string& newDue);
   void setStatus(const std::string& newStatus);
 
-  std::string header();
+  static std::string header();
   std::string toString();
 };
 
