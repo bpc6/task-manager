@@ -1,6 +1,7 @@
 add_executable(task_test)
 target_include_directories(task_test PRIVATE ../include)
 target_sources(task_test PRIVATE
+        main_test.cpp
         task_test.cpp
         ../src/task.cpp
         task_manager_test.cpp

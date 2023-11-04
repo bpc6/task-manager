@@ -49,8 +49,3 @@ TEST(TaskTOSTRINGTest, TOSTRING) {
   Task task("Task Title", "2023-10-31", "Task Description");
   EXPECT_EQ(task.toString(), "Task Title, Task Description, 2023-10-31, Not Started,\n");
 }
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
