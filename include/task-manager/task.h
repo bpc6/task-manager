@@ -7,11 +7,11 @@ class Task {
  private:
   std::string title;
   std::string due;
-  std::string description;
   std::string status;
+  std::string description;
 
  public:
-  Task(std::string title, std::string dueDate, std::string description, std::string status);
+  Task(std::string title, std::string dueDate, std::string status, std::string description);
   Task(std::string title, std::string dueDate, std::string description);
   Task(std::string title, std::string dueDate);
 
@@ -27,6 +27,7 @@ class Task {
   void setDue(const std::string& newDue);
   void setStatus(const std::string& newStatus);
 
+  std::string header();
   std::string toString();
 };
 

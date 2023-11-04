@@ -6,5 +6,5 @@ TEST(AddTask, AddTask) {
   TaskManager taskManager;
   taskManager.addTask(Task("title", "date"));
 
-  EXPECT_EQ(taskManager.toString(), "title, , date, Not Started,\n");
+  EXPECT_EQ(taskManager.toString(), "title, date, Not Started, ,\n");
 }

@@ -22,7 +22,7 @@ TEST(TaskConstructorTest, ConstructorWithoutDescription) {
 }
 
 TEST(TaskConstructorTest, ConstructorWithStatus) {
-  Task task("Task Title", "2023-10-31", "Task Description", "In Progress");
+  Task task("Task Title", "2023-10-31", "In Progress", "Task Description");
   EXPECT_EQ(task.getTitle(), "Task Title");
   EXPECT_EQ(task.getDescription(), "Task Description");
   EXPECT_EQ(task.getDue(), "2023-10-31");
@@ -45,7 +45,7 @@ TEST(TaskGetterSetterTest, SettersAndGetters) {
 }
 
 // Test the toString method
-TEST(TaskTOSTRINGTest, TOSTRING) {
+TEST(TaskToStringTest, TOSTRING) {
   Task task("Task Title", "2023-10-31", "Task Description");
-  EXPECT_EQ(task.toString(), "Task Title, Task Description, 2023-10-31, Not Started,\n");
+  EXPECT_EQ(task.toString(), "Task Title, 2023-10-31, Not Started, Task Description,\n");
 }

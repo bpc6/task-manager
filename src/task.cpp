@@ -12,7 +12,7 @@ Task::Task(std::string title, std::string dueDate, std::string description)
       status("Not Started"),
       description(std::move(description)) {}
 
-Task::Task(std::string title, std::string dueDate, std::string description, std::string status)
+Task::Task(std::string title, std::string dueDate, std::string status, std::string description)
     : title(std::move(title)),
       due(std::move(dueDate)),
       status(std::move(status)),
@@ -37,5 +37,7 @@ void Task::setDue(const std::string& newDue) { due = newDue; }
 void Task::setStatus(const std::string& newStatus) { status = newStatus; }
 
 std::string Task::toString() {
-  return title + ", " + description + ", " + due + ", " + status + ",\n";
+  return title + ", " + due + ", " + status + ", " + description + ",\n";
 }
+
+std::string Task::header() { return "title, due, status, description,\n"; }
