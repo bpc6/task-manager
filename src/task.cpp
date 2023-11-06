@@ -43,13 +43,13 @@ std::string Task::toString() {
 
 std::string Task::header() { return "title, due, status, description,"; }
 
-Task Task::fromString(const std::string& s) {
+Task::Task(const std::string& s) {
   std::istringstream iss(s);
-  std::string title, due, desc, status;
   using std::getline;
+
   if (getline(iss, title, ',') && getline(iss >> std::ws, due, ',') &&
-      getline(iss >> std::ws, status, ',') && getline(iss >> std::ws, desc, ',')) {
-    return {title, due, status, desc};
+      getline(iss >> std::ws, status, ',') && getline(iss >> std::ws, description, ',')) {
+  } else {
+    throw std::invalid_argument("Invalid Task input format");
   }
-  throw std::invalid_argument("Invalid Task input format");
 }

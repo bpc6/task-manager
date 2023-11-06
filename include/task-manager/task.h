@@ -29,7 +29,7 @@ class Task {
 
   static std::string header();
   std::string toString();
-  static Task fromString(const std::string& s);
+  explicit Task(const std::string& s);
 };
 
 #endif  // TASK_MANAGER_TASK_H

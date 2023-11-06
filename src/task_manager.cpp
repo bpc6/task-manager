@@ -78,7 +78,7 @@ TaskManager TaskManager::fromCsv(const std::string& csvPath) {
       throw std::invalid_argument("Invalid TaskManager CSV format");
     }
     while (std::getline(file, line)) {
-      taskManager.addTask(Task::fromString(line));
+      taskManager.addTask(Task(line));
     }
     file.close();
   }
