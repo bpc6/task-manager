@@ -47,5 +47,28 @@ TEST(TaskGetterSetterTest, SettersAndGetters) {
 // Test the toString method
 TEST(TaskToStringTest, TOSTRING) {
   Task task("Task Title", "2023-10-31", "Task Description");
-  EXPECT_EQ(task.toString(), "Task Title, 2023-10-31, Not Started, Task Description,\n");
+  EXPECT_EQ(task.toString(), "Task Title, 2023-10-31, Not Started, Task Description,");
+}
+
+TEST(TaskFromString, Success) {
+  std::string input = "Task Title, 2023-11-30, In Progress, Sample description,";
+
+  std::optional<Task> result = Task::fromString(input);
+
+  ASSERT_TRUE(result.has_value());
+  Task task = result.value();
+  EXPECT_EQ(task.getTitle(), "Task Title");
+  EXPECT_EQ(task.getDue(), "2023-11-30");
+  EXPECT_EQ(task.getDescription(), "Sample description");
+  EXPECT_EQ(task.getStatus(), "In Progress");
+}
+
+TEST(TaskFromString, Failure) {
+  std::string input = "Invalid Format";
+  try {
+    Task task = Task::fromString(input);
+    FAIL() << "Expected an exception, but no exception was thrown.";
+  } catch (const std::invalid_argument& e) {
+    SUCCEED();
+  }
 }

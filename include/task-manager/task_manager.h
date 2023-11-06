@@ -14,11 +14,13 @@ class TaskManager {
  public:
   void addTask(const Task& task);
   int removeTask(const std::string& title);
-  int editTitle(const std::string& oldTitle, std::string newTitle);
+  int editTitle(const std::string& oldTitle, const std::string& newTitle);
+  int editStatus(const std::string& oldTitle, const std::string& newStatus);
 
   std::string toString();
   void viewTasks();
   int toCsv(const std::string& csvPath);
+  static TaskManager fromCsv(const std::string& csvPath);
 };
 
 #endif  // TASK_MANAGER_TASK_MANAGER_H

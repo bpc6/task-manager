@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <sstream>
 
 std::optional<int> TaskManager::findTaskIndex(const std::string& title) {
   int taskIdx = -1;
@@ -28,7 +29,7 @@ int TaskManager::removeTask(const std::string& title) {
   return EXIT_SUCCESS;
 }
 
-int TaskManager::editTitle(const std::string& oldTitle, std::string newTitle) {
+int TaskManager::editTitle(const std::string& oldTitle, const std::string& newTitle) {
   std::optional<int> editIdx = findTaskIndex(oldTitle);
   if (!editIdx.has_value()) {
     return EXIT_FAILURE;
@@ -37,10 +38,19 @@ int TaskManager::editTitle(const std::string& oldTitle, std::string newTitle) {
   return EXIT_SUCCESS;
 }
 
+int TaskManager::editStatus(const std::string& oldTitle, const std::string& newStatus) {
+  std::optional<int> editIdx = findTaskIndex(oldTitle);
+  if (!editIdx.has_value()) {
+    return EXIT_FAILURE;
+  }
+  tasks[editIdx.value()].setStatus(newStatus);
+  return EXIT_SUCCESS;
+}
+
 std::string TaskManager::toString() {
-  std::string result = Task::header();
+  std::string result = Task::header() + "\n";
   for (Task task : tasks) {
-    result += task.toString();
+    result += task.toString() + "\n";
   }
   return result;
 }
@@ -56,4 +66,20 @@ int TaskManager::toCsv(const std::string& csvPath) {
   csv << toString();
   csv.close();
   return EXIT_SUCCESS;
+}
+
+TaskManager TaskManager::fromCsv(const std::string& csvPath) {
+  TaskManager taskManager;
+  std::ifstream file(csvPath);
+  if (file.is_open()) {
+    std::string line;
+    std::getline(file, line);
+    if (line != Task::header()) {
+      throw std::invalid_argument("Invalid TaskManager CSV format");
+    }
+    while (std::getline(file, line)) {
+      taskManager.addTask(Task::fromString(line));
+    }
+    file.close();
+  }
 }

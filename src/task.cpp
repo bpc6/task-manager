@@ -1,5 +1,6 @@
 #include "task-manager/task.h"
 
+#include <sstream>
 #include <string>
 #include <utility>
 
@@ -37,7 +38,18 @@ void Task::setDue(const std::string& newDue) { due = newDue; }
 void Task::setStatus(const std::string& newStatus) { status = newStatus; }
 
 std::string Task::toString() {
-  return title + ", " + due + ", " + status + ", " + description + ",\n";
+  return title + ", " + due + ", " + status + ", " + description + ",";
 }
 
-std::string Task::header() { return "title, due, status, description,\n"; }
+std::string Task::header() { return "title, due, status, description,"; }
+
+Task Task::fromString(const std::string& s) {
+  std::istringstream iss(s);
+  std::string title, due, desc, status;
+  using std::getline;
+  if (getline(iss, title, ',') && getline(iss >> std::ws, due, ',') &&
+      getline(iss >> std::ws, status, ',') && getline(iss >> std::ws, desc, ',')) {
+    return {title, due, status, desc};
+  }
+  throw std::invalid_argument("Invalid Task input format");
+}
