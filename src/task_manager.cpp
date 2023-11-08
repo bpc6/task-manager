@@ -82,4 +82,5 @@ TaskManager TaskManager::fromCsv(const std::string& csvPath) {
     }
     file.close();
   }
+  return taskManager;
 }
